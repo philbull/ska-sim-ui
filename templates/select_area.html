@@ -1,0 +1,136 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h1><b>Select sky area</b></h1>
+    </div>
+  </header>
+  
+<!--
+ body {
+  background: #101010;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+-->
+ 
+  <!-- Interactive sky area selector -->
+  <div class="w3-container w3-padding-24">
+    <canvas width="100px" height="100px" id="canvas"></canvas>
+  </div>
+  <!-- End sky area selector -->
+ 
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+
+<script>
+let width, height;
+let pixels = [];
+let colors = ['#540045', '#C60052', '#FF714B', '#EAFF87', '#ACFFE9'];
+let currentPixel = 0;
+let mousedown = false;
+
+// Basic properties of pixel grid
+const pxsize = 10;
+const pxborder = 0.5;
+const Nx = 80;
+const Ny = 50;
+
+const mousePosition = { x: window.innerWidth/2, y: window.innerHeight/2 };
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const drawGrid = () => {
+  ctx.clearRect(0, 0, width, height);
+  
+  for (var i = 0, l = pixels.length; i < l; i++) {
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#222';
+    ctx.fillRect(pixels[i][0], pixels[i][1], pixels[i][2], pixels[i][3]);
+    ctx.globalAlpha = pixels[i][5];
+    ctx.fillStyle = pixels[i][4];
+    ctx.fillRect(pixels[i][0], pixels[i][1], pixels[i][2], pixels[i][3]);
+  }
+}
+
+<!--:active { -->
+<!--    cursor: url(image/pencil.cur);-->
+<!--}-->
+
+const resize = () => {
+  // Set canvas size
+  width = pxsize * Nx;
+  height = pxsize * Ny;
+  canvas.width = width;
+  canvas.height = height;
+  
+  // xxx
+  
+  
+  // Create store for pixel coordinates
+  new_pixels = [];
+  for (var y = 0; y < Ny; y++) {
+    for (var x = 0; x < Nx; x++) {
+      new_pixels.push([x*pxsize, y*pxsize, pxsize-pxborder, pxsize-pxborder, '#222', 1]);
+    }
+  }
+  pixels = new_pixels;
+}
+
+const resize_canvas = () => {
+  resize();
+  drawGrid();
+}
+
+function pixel_click(e) {
+  if (mousedown){
+      mousePosition.x = e.pageX;
+      mousePosition.y = e.pageY;
+      
+      var bbox = canvas.getBoundingClientRect();
+      var mx = e.pageX - bbox.left;
+      var my = e.pageY - bbox.top;
+      
+      console.log(mx);
+      var pix = Nx * Math.floor(Ny*my/height) + Math.floor(Nx*mx/width);
+      
+      if (pixels[pix]) {
+          pixels[pix][4] = "#ff0000"; //coloredPixels[i].color;
+          pixels[pix][5] = 1; //coloredPixels[i].alpha;
+      }
+      drawGrid();
+  }
+}
+
+//resize();
+//initColoredPixels();
+//draw();
+resize_canvas();
+
+window.addEventListener('resize', resize_canvas);
+//window.addEventListener('mouseup', pixel_click);
+window.addEventListener('dragover', pixel_click);
+window.addEventListener('mousemove', pixel_click);
+
+window.addEventListener('mousedown', function(e){mousedown=true});
+window.addEventListener('mouseup', function(e){mousedown=false});
+
+
+</script>
+
+  
+{% endblock %}

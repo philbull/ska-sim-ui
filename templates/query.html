@@ -1,0 +1,212 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h2><b>SQL Query</b></h2>
+    </div>
+  </header>
+  
+  <div class="w3-container w3-twothird">
+    
+    <!-- Code editor UI -->
+    <div id="query-editor">select blackHoleMass, lightconeRedshift from galacticus;</div>
+    
+    <div class="w3-container">
+      <button class="w3-button w3-indigo w3-padding-large w3-margin-top w3-margin-bottom" onclick="submit_query()">
+        <i class="fa fa-download w3-margin-right"></i>Run Query
+      </button>
+    </div>
+    
+    <!-- Info box -->
+    <div class="w3-card w3-margin-bottom" style="padding: 4px;">
+    <div class="w3-container w3-white">
+      <div class="w3-container w3-cell-row w3-cell-middle">
+        <div class="w3-cell w3-cell-middle">
+          <h4 id="info-title">Database information</h4>
+        </div>
+        <div class="w3-cell w3-right">
+          <p><b id="info-units"></b></p>
+        </div>
+      </div>
+      <div class="w3-container">
+      <p id="info-code" class="w3-code w3-light-gray" style="display: none"></p>
+      <p id="info-text" style="margin-top:0px">Use the guide pane on the right to find information about the available simulation catalogues and fields. You can also find some example queries that can be used as templates.</p>
+      </div>
+    </div>
+    </div>
+    <!-- End info box -->
+    
+  </div>
+  <!-- End code editor UI -->
+  
+  
+  <!-- Guide panel -->
+  <div class="w3-third w3-card w3-margin-bottom w3-padding-16">
+    <div class="w3-container">
+    <h4>Guide</h4>
+    
+    
+    <button onclick="show_docs('cats')" class="w3-btn w3-block w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> Catalogues</button>
+    <div id="cats" class="w3-container w3-hide w3-show">
+      <ul class="w3-ul w3-margin-top w3-margin-bottom">
+        {% for cat in catalogues %}
+        <li class="clickable">
+          <code>
+            <a style="text-decoration: none;" href="/sim?name={{ cat }}" target="_blank">{{ cat }} <i class="fa fa-external-link w3-tiny"></i></a>
+          </code>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  
+    <button onclick="show_docs('fields')" class="w3-btn w3-block w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> Fields</button>
+    <div id="fields" class="w3-container w3-hide" style="max-height:400px; overflow-y:scroll">
+      <input class="w3-input w3-border w3-padding w3-margin-top" type="text" placeholder="Search for field names..." id="myInput" onkeyup="search_fields()">
+      <ul class="w3-ul w3-margin-top" id="ul-fieldnames">
+      
+        {% for field in field_specs %}
+        <li class="clickable"><code onclick="show_info('field', this)">{{ field[0] }}</code></li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <button onclick="show_docs('examples')" class="w3-btn w3-block w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> Example queries</button>
+    <div id="examples" class="w3-container w3-hide">
+      <ul class="w3-ul w3-margin-top">
+        {% for ex in examples %}
+        <li class="clickable" onclick="show_info('example', '{{ loop.index }}')">{{ ex[1] }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  
+  </div>
+  </div>
+  <!-- end testing -->
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div>
+  
+<script>
+function submit_query(){
+  var editor = ace.edit("query-editor");
+  var query = editor.getValue();
+  post('/sql_query', {sql: query});
+}
+</script>
+
+<script>
+
+// List of SQL query examples
+let query_examples = {
+    {% for ex in examples %}
+    ex{{ loop.index }}: ["{{ ex[1] }}", "{{ ex[2] }}", "{{ ex[3] }}"],
+    {% endfor %}
+    blank: ['', '', ''] // Need this line to prevent trailing comma
+};
+
+// List of DB fields, incl. descriptions and units
+let field_specs = {
+    // field_names, units, descs
+    {% for field in field_specs %} 
+    "{{field[0]}}": ["{{ field[1] }}", "{{ field[2] }}", "{{ field[3] }}"], {% endfor %}
+    blank: ['', ''] // Need this line to prevent trailing comma in definition
+};
+
+let field_names = [
+    {% for field in field_specs %} "{{field[0]}}", {% endfor %}
+    "None" // Need this to prevent trailing comma
+];
+let short_names = [
+    {% for field in field_specs %} "{{field[1]}}", {% endfor %}
+    "None" // Need this to prevent trailing comma
+];
+
+let short_name_lookup = {
+    {% for field in field_specs %} "{{field[1]}}": "{{field[0]}}", {% endfor %}
+    blank: '' // Need this line to prevent trailing comma in definition
+};
+</script>
+
+<script>
+    var editor = ace.edit("query-editor");
+    editor.setTheme("ace/theme/sqlserver");
+    editor.setOption('wrap', true);
+    editor.getSession().setMode("ace/mode/sql");
+    
+    // Function to handle autocomplete lookup from list of fields
+    // See https://stackoverflow.com/questions/30041816/ace-editor-autocomplete-custom-strings
+    var lookupCompleter = {
+        getCompletions: function(editor, session, pos, prefix, callback) {
+            callback(null, short_names.map(function(field) {
+                return {caption: field, 
+                        value: field, 
+                        meta: short_name_lookup[field]};
+            }));
+        } // end getCompletions
+    } // end lookupCompleter
+    
+    // Enable autocomplete from list
+    var langTools = ace.require('ace/ext/language_tools');
+    editor.setOption('enableLiveAutocompletion', true);
+    editor.completers = [lookupCompleter];
+    
+</script>
+  
+<script>
+function search_fields() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("ul-fieldnames");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        if (li[i].innerText.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<script>
+function show_info(box_type, caller){
+    
+    if (box_type == 'example'){
+        // Get data for this example query
+        info = query_examples['ex'+caller];
+        
+        // Show the code box
+        document.getElementById("info-code").style.display = "block";
+        
+        // Show in infobox
+        document.getElementById("info-title").innerText = info[0];
+        document.getElementById("info-text").innerText = info[2];
+        document.getElementById("info-code").innerText = info[1];
+    }
+    
+    // 
+    if (box_type == 'field'){
+        // Get the field name from the list item that was clicked
+        var fname = caller.innerText;
+        
+        // Hide the code box
+        document.getElementById("info-code").style.display = "none";
+        
+        // Set the infobox title and text appropriately
+        document.getElementById("info-title").innerText = fname;
+        document.getElementById("info-text").innerText = field_specs[fname][2];
+        document.getElementById("info-units").innerText = field_specs[fname][1];
+    } // end check for 'field' type
+}
+</script>
+
+{% endblock %}
+

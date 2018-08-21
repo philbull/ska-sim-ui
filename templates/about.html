@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h2><b>About SKA Simulations</b></h2>
+    </div>
+  </header>
+  
+  <div class="w3-container w3-twothird">
+    
+    <!-- Info box -->
+    <div class="w3-card w3-margin-bottom" style="padding: 4px;">
+    <div class="w3-container w3-sand">
+      <div class="w3-container w3-cell-row w3-cell-middle">
+        <h4 id="info-title">Citing the simulations</h4>
+      </div>
+      <div class="w3-container">
+      <p style="margin-top:0px">If you make use of any of the simulations hosted here in a publication, please include the citations listed on the info pages of those simulations.</p>
+      <p style="margin-top:0px">We would also appreciate an acknowledgement of using this hosting service, e.g. by including the following text in your acknowledgements: <i>&quot;We acknowledge use of the SKA Simulation Service, hosted by Queen Mary University of London&quot;</i>.</p>
+      </div>
+    </div>
+    </div>
+    
+    <!-- Info box -->
+    <div class="w3-card w3-margin-bottom" style="padding: 4px;">
+    <div class="w3-container w3-sand">
+      <div class="w3-container w3-cell-row w3-cell-middle">
+        <h4 id="info-title">Can I upload my simulation here?</h4>
+      </div>
+      <div class="w3-container">
+      <p style="margin-top:0px">If you have a simulation that is relevant to SKA and want to host it through this service, please get in touch with <a href="mailto:philbull@gmail.com">Phil Bull</a>. We have a decent amount of space available to host SKA-related simulations, and can support several different database/file formats for the data.</p>
+      </div>
+    </div>
+    </div>
+    
+    <!-- Info box -->
+    <div class="w3-card w3-margin-bottom" style="padding: 4px;">
+    <div class="w3-container w3-sand">
+      <div class="w3-container w3-cell-row w3-cell-middle">
+        <h4 id="info-title">Can I make my own mirror of the simulations?</h4>
+      </div>
+      <div class="w3-container">
+      <p style="margin-top:0px">Yes, as long as you get permission from the owners of the simulations you want to host. The web interface itself is open source, and can be downloaded from Git <b>(TODO)</b>.</p>
+      </div>
+    </div>
+    </div>
+    
+  </div>
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div>
+
+{% endblock %}
+

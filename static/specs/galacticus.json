@@ -1,0 +1,271 @@
+{
+  "name":        "galacticus",
+  "long-name":   "Galacticus",
+  "credit":      "JPL/QMUL",
+  "provides": [
+      {"value": "higal"},
+      {"value": "continuum"}
+   ],
+  "short-desc": "Multi-wavelength mock catalogue based on Horizon and Galacticus (0.5 < z < 2.0; 100 deg2).",
+  "catalogue": {
+        "table_name": "galacticus",
+        "fields": [
+            {"name": "mhalo", 
+             "units": "Msun", 
+             "desc": "Halo mass (virial radius)."
+            },
+            {"name":     "id",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "snapid",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloUnaccretedMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloOutflowedAbundancesMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "satelliteBoundMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "siblingIndex",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "blackHoleMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidStarFormationRate",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "basicTimeLastIsolated",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskStarFormationRate",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionVelocityY",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionVelocityX",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionVelocityZ",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "basicMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "blackHoleSpin",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidRadius",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionPositionY",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionPositionX",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "positionPositionZ",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloAbundancesMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeIndex",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconeVelocityX",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconeVelocityY",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeVirialVelocity",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeVirialRadius",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidMassGas",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidAngularMomentum",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidAbundancesGasMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "satelliteIndex",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconePositionZ",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconePositionX",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconePositionY",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spinSpin",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeMass200_0",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidVelocity",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "inclination",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconeVelocityZ",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskVelocity",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeMass500_0",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskMassGas",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeIsIsolated",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidAbundancesStellarMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "parentIndex",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskRadius",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloOutflowedMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeRadius200_0",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskAngularMomentum",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "halfMassRadius",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "spheroidMassStellar",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "satelliteMergeTime",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskAbundancesStellarMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloOuterRadius",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskAbundancesGasMetals",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloAngularMomentum",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "diskMassStellar",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "blackHoleCount",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "lightconeRedshift",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "darkMatterProfileScale",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "nodeRadius500_0",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloMass",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "hotHaloOutflowedAngularMomentum",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "satelliteStatus",
+             "units":   "None",
+             "desc":    "None"
+            },
+            {"name":    "angularWeight",
+             "units":   "None",
+             "desc":    "None"
+            }
+        ]
+  }
+}

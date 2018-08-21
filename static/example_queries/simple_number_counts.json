@@ -1,0 +1,7 @@
+{
+  "name":       "hi-number-unity",
+  "long-name":  "HI number counts from UNITY",
+  "sql-query":  "select z from unity where something something;",
+  "long-desc":  "Calculate HI galaxy number counts above a threshold of 1 uJy."
+}
+

@@ -1,0 +1,60 @@
+{
+  "name":        "unity",
+  "long-name":   "UNITY",
+  "credit":      "JPL/QMUL",
+  "provides": [
+      {"value": "higal"},
+      {"value": "continuum"}
+   ],
+  "short-desc": "Multi-wavelength mock catalogue based on Horizon and Galacticus (0.5 < z < 2.0; 100 deg2).",
+  "catalogue": {
+        "table_name": "unity",
+        "fields": [
+            {"name": "mhalo", 
+             "units": "Msun", 
+             "desc": "Halo mass (virial radius)."
+            },
+            {"name": "mstar", 
+             "units": "Msun", 
+             "desc": "Stellar mass contained within halo."
+            },
+            {"name": "sfr", 
+             "units": "Msun/yr", 
+             "desc": "Total star-formation rate."
+            },
+            {"name": "lsst_u", 
+             "units": "mags", 
+             "desc": "u-band magnitude."
+            }
+        ]
+  },
+  "snapshots": [
+       {"name": "lensing",
+        "desc": "Lensing maps generated from the UNITY simulation lightcone.",
+        "snaps": [
+            {"name":     "UNITY CMB lensing map", 
+             "filename": "unity_cmb_lensing.fits",
+             "format":   "healpix/fits",
+             "desc":     "CMB lensing map for the UNITY simulation lightcone.",
+             "md5sum":   "698b698a6ba69a6b94d"
+            }
+        ] },
+       {"name": "density",
+        "desc": "Smoothed matter density field for each redshift slice.",
+        "snaps": [
+            {"name":     "Density field at z=0.0", 
+             "filename": "unity_density_z0.0.fits",
+             "format":   "hd5",
+             "desc":     "Density field smoothed to 5 Mpc.",
+             "md5sum":   "698b698a6ba69a6b94d"
+            },
+            {"name":     "Density field at z=0.2", 
+             "filename": "unity_density_z0.2.fits",
+             "format":   "hd5",
+             "desc":     "Density field smoothed to 5 Mpc.",
+             "md5sum":   "698b698a6ba69a6b94d"
+            }
+        ] }
+    ]
+}
+

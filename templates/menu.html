@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>SKA Simulations</b></h1>
+    
+    <!-- Selection bar for sims -->
+    <div class="w3-section w3-bottombar">
+      <h3>Find a simulation...</h3>
+      <span class="w3-margin-right">Filter:</span> 
+      <button class="w3-button w3-signal-black simselect" onclick="show_all()">ALL</button>
+      <button class="w3-button w3-indigo simselect" onclick="show_only(this, 'continuum')"><i class="fa fa-asterisk w3-margin-right"></i>Continuum</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'higal')"><i class="fa fa-superpowers w3-margin-right"></i>HI galaxies</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'intensitymap')"><i class="fa fa-th-large w3-margin-right"></i>Intensity maps</button>
+      
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'catalogue')"><i class="fa fa-cubes w3-margin-right"></i>Catalogues</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'image')"><i class="fa fa-photo w3-margin-right"></i>Images</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'snapshot')"><i class="fa fa-cube w3-margin-right"></i>Snapshots</button>
+    </div>
+    </div>
+  </header>
+  
+  <!-- Grid of available simulations -->
+  <div class="w3-row-padding w3-margin-left w3-twothird" style="width:72%">
+    
+    {% for card in cards %}
+    <a class="w3-card w3-margin-bottom w3-margin-right item-card {{ card[2] }}" style="display:block; margin-left:3em; padding:4px" href="{{ card[3] }}">
+      <div class="w3-container w3-white">
+        <p class="w3-quarter">
+          <b>{{ card[0] }}</b><br>
+          {% for icon in card[4] %}
+          <i class="fa {{ icon }}"></i>
+          {% endfor %}
+        </p>
+        <p class="w3-half">{{ card[5] }}</p>
+        <p class="w3-quarter w3-right-align w3-text-gray">{{ card[1] }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div>
+
+{% endblock %}
+

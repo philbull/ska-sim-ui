@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="css/clusterize.css" rel="stylesheet">
+  <script src="/static/clusterize.min.js"></script>
+  
+  <!-- Font choice -->
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .w3-2017-marina {color:#fff;background-color:#578CA9}
+  </style>
+  
+  <!-- ACE code editor -->
+  <style type="text/css" media="screen">
+    #query-editor { 
+        min-height: 400px;
+        font-size: x-large;
+    }
+  </style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px" onload="generate_data()">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="images/ska_logo.jpg" style="width:45%;">
+    <br>
+    <h4><b>SIMULATIONS</b></h4>
+  </div>
+  
+  <!-- SIMULATIONS -->
+  <div class="w3-bar-block">
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      UNITY
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      GHOST
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      JUBILEE
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      T-RECS
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      S3-SAX (Legacy)
+    </a>
+  </div>
+  
+  <!-- QUERY UI -->
+  <div class="w3-container">
+    <h4><b>QUERY CATALOGUE</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-search fa-fw w3-margin-right"></i>
+      SQL QUERY
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-info fa-fw w3-margin-right"></i>
+      GETTING STARTED
+    </a>
+  </div>
+  
+  <!-- INFO -->
+  <div class="w3-container">
+    <h4><b>INFO</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-user fa-fw w3-margin-right"></i>
+      ABOUT
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-envelope fa-fw w3-margin-right"></i>
+      CONTACT
+    </a>
+  </div>
+  
+  <footer class="w3-container">
+    <br><br>
+    <p class="w3-text-grey">Hosted by:</p>
+    <img src="images/qmul.png" style="width:80%;">
+  </footer>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="sims">
+    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h1><b>SQL Query interface</b></h1>
+    </div>
+  </header>
+  
+  <div class="w3-twothird w3-card w3-margin-bottom w3-margin-left w3-padding-16">
+    <div class="w3-container">
+      <h2>Input Query</h2>
+      <div class="w3-container w3-white">
+        <div class="w3-code">
+        blah
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Use dynamic table display code for large tables -->
+  <div class="w3-container w3-padding-16">
+    <h2>Query Results</h2>
+    
+    <div class="clusterize">
+      <table class="w3-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Column1</th>
+            <th>Column2</th>
+          </tr>
+        </thead>
+      </table>
+      <div id="scrollArea" class="clusterize-scroll">
+        <table class="w3-table w3-white">
+          <tbody id="contentArea" class="clusterize-content">
+            <tr class="clusterize-no-data">
+              <td>Loading data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    
+  </div>
+  <!-- End dynamic table display -->
+  
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+  
+  <!--
+  <!-- Footer --
+  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <div class="w3-row-padding">
+    
+    <div class="w3-half">
+      <h3>ABOUT</h3>
+      <p>The SKA Simulation Repository is hosted by Queen Mary, University of London.</p>
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div>
+  
+    <div class="w3-half">
+      <h3>BLOG POSTS</h3>
+      <ul class="w3-ul w3-hoverable">
+        <li class="w3-padding-16">
+          <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Lorem</span><br>
+          <span>Sed mattis nunc</span>
+        </li>
+        <li class="w3-padding-16">
+          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Ipsum</span><br>
+          <span>Praes tinci sed</span>
+        </li> 
+      </ul>
+    </div>
+
+  </div>
+  </footer>
+  
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+  -->
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+<script>
+function generate_data(){
+    
+    // Generate some example data
+    var data = [];
+    var N = 500;
+    for (var i = 1; i <= N; i++){
+       data.push('<tr><td>' + i + '</td><td>xyz</td><td>comment</td></tr>');
+    }
+    
+    // Create new Clusterize object
+    var clusterize = new Clusterize({
+        rows: data,
+        scrollId: 'scrollArea',
+        contentId: 'contentArea',
+        tag: 'tr'
+    });
+}
+</script>
+
+</body>
+</html>
+

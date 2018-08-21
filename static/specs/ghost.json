@@ -1,0 +1,28 @@
+{
+  "name":       "ghost",
+  "long-name":  "ghost",
+  "credit":     "QMUL",
+  "provides": [
+      {"value": "higal"},
+      {"value": "continuum"}
+   ],
+  "short-desc": "Set of 100 multi-wavelength mock catalogues based on COLA + ghost analytic model (0 < z < XX; XX deg2).",
+  "catalogue": {
+        "table_name": "ghost",
+        "fields": [
+            {"name": "mhalo", 
+             "units": "Msun", 
+             "desc": "Halo mass (virial radius)."
+            },
+            {"name": "mstar", 
+             "units": "Msun", 
+             "desc": "Stellar mass contained within halo."
+            },
+            {"name": "sfr", 
+             "units": "Msun/yr", 
+             "desc": "Total star-formation rate."
+            }
+        ]
+  }
+}
+

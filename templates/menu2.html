@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .w3-signal-black {color:#fff; background-color:#282828}
+  </style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="/static/images/ska_logo.jpg" style="width:45%;">
+    <br>
+    <h4><b>SIMULATIONS</b></h4>
+  </div>
+  
+  <!-- SIMULATIONS -->
+  <div class="w3-bar-block">
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      UNITY
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      GHOST
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      JUBILEE
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      T-RECS
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      S3-SAX (Legacy)
+    </a>
+  </div>
+  
+  <!-- QUERY UI -->
+  <div class="w3-container">
+    <h4><b>QUERY CATALOGUE</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="/query" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-search fa-fw w3-margin-right"></i>
+      SQL QUERY
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-info fa-fw w3-margin-right"></i>
+      GETTING STARTED
+    </a>
+  </div>
+  
+  <!-- INFO -->
+  <div class="w3-container">
+    <h4><b>INFO</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-user fa-fw w3-margin-right"></i>
+      ABOUT
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-envelope fa-fw w3-margin-right"></i>
+      CONTACT
+    </a>
+  </div>
+  
+  <footer class="w3-container">
+    <br><br>
+    <p class="w3-text-grey">Hosted by:</p>
+    <img src="/static/images/qmul.png" style="width:80%;">
+  </footer>
+  
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="sims">
+    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>SKA Simulations</b></h1>
+    
+    <div class="w3-container">
+      <p>Welcome to the SKA Simulation Service.</p>
+    </div>
+    
+    <div class="w3-section w3-bottombar w3-padding-16">
+      <span class="w3-margin-right">Filter:</span> 
+      <button class="w3-button w3-signal-black simselect" onclick="show_all()">ALL</button>
+      <button class="w3-button w3-indigo simselect" onclick="show_only(this, 'continuum')"><i class="fa fa-asterisk w3-margin-right"></i>Continuum</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'higal')"><i class="fa fa-superpowers w3-margin-right"></i>HI galaxies</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'intensitymap')"><i class="fa fa-th-large w3-margin-right"></i>Intensity maps</button>
+      
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'catalogue')"><i class="fa fa-cubes w3-margin-right"></i>Catalogues</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'image')"><i class="fa fa-photo w3-margin-right"></i>Images</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'snapshot')"><i class="fa fa-cube w3-margin-right"></i>Snapshots</button>
+    </div>
+    </div>
+  </header>
+  
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-margin-left">
+    
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum higal catalogue">
+      <img src="/static/images/continuum.jpg" alt="UNITY" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>UNITY</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-superpowers"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">JPL/QMUL</p>
+        <p>
+          Multi-wavelength mock galaxy catalogue, including 21cm line, continuum, optical <i>ugrizy</i> and H-alpha. Based on Horizon simulation(??) and the <i>Galacticus</i> SAM. Covers 0 &lt; z &lt; 1.5 over XXX deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum higal catalogue">
+      <img src="/static/images/ghost.jpg" alt="ghost" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>ghost</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-superpowers"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">QMUL</p>
+        <p>
+          Multi-wavelength mock catalogue, including 21cm, continuum, optical <i>ugriz</i>. Based on COLA fast N-body simulations and the <i>ghost</i> analytic galaxy model. Covers 0 &lt; z &lt; XX over XX deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum catalogue image">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+          <i class="fa fa-photo"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">U. Manchester</p>
+        <p>
+          Continuum mock catalogue and images, with intensity and polarisation information. Based on Millennium(?) simulation and empirical scaling relations. Covers 0 &lt; z &lt; 8 over 25 deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-margin-left">
+    
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16 continuum">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+    
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+  
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey ">
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <h3>ABOUT</h3>
+      <p>The SKA Simulation Repository is hosted by Queen Mary, University of London.</p>
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div>
+  
+    <div class="w3-half">
+      <h3>BLOG POSTS</h3>
+      <ul class="w3-ul w3-hoverable">
+        <li class="w3-padding-16">
+          <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Lorem</span><br>
+          <span>Sed mattis nunc</span>
+        </li>
+        <li class="w3-padding-16">
+          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Ipsum</span><br>
+          <span>Praes tinci sed</span>
+        </li> 
+      </ul>
+    </div>
+
+  </div>
+  </footer>
+  
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+
+// Functions to set card opacity when a button is clicked
+function opacity_all_cards(opac){
+  var cards = document.getElementsByClassName("w3-card");
+    for (var i = cards.length - 1; i >= 0; i--){
+      cards[i].style.opacity = opac;
+    }
+}
+function focus_all_cards() { opacity_all_cards("1.0"); }
+function defocus_all_cards() { opacity_all_cards("0.1"); }
+
+function focus_all_buttons(){
+  var btns = document.getElementsByClassName("simselect");
+    for (var i = btns.length - 1; i >= 0; i--){
+      btns[i].classList.remove('w3-black', 'w3-hover-black');
+    }
+}
+
+function show_all() {
+    focus_all_cards();
+    focus_all_buttons();
+}
+
+function show_only(btn, card_type) {
+    // Defocus all cards first
+    defocus_all_cards();
+    
+    // Re-show only the cards that belong to the specified class
+    var cards = document.getElementsByClassName(card_type);
+    for (var i = cards.length - 1; i >= 0; i--){
+      cards[i].style.opacity = "1.0";
+    }
+    
+    // Highlight button that was clicked
+    focus_all_buttons();
+    btn.classList.add('w3-black', 'w3-hover-black');
+}
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+{
+  "name":       "manchesterim",
+  "long-name":  "Manchester IM sims",
+  "credit":     "U. Manchester",
+  "provides": [
+      {"value": "intensitymap"}
+   ],
+  "short-desc": "Simulated (log-normal) intensity maps with instrumental effects and foregrounds (0 < z < 3; 5000 deg2)."
+}
+

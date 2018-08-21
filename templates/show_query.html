@@ -1,0 +1,165 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+<!--    <h1><b>SQL Query interface</b></h1>-->
+    <h2>Query Results ({{sql_res|length}} rows)</h2>
+    </div>
+  </header>
+  
+  <div class="w3-twothird w3-card w3-margin-bottom w3-margin-left w3-padding-16">
+    <div class="w3-container">
+      <!--<h3>Input Query</h3>-->
+      <div class="w3-container w3-white">
+        <div class="w3-code">
+        {{ sql_query }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% if sql_err %}
+  <div class="w3-twothird w3-card w3-pale-red w3-margin-bottom w3-margin-left w3-padding-16">
+      <div class="w3-container w3-red">
+        <h3>Query failed</h3>
+      </div>
+      <div class="w3-container w3-pale-red w3-border-red">
+        <p><code>{{ sql_err }}</code></p>
+      </div>
+  </div>
+  {% endif %}
+  
+  {% if query_status == 'inprogress' or query_status == 'pending' %}
+  <div class="w3-twothird w3-card w3-blue w3-margin-bottom w3-margin-left w3-padding-8">
+      <div class="w3-container w3-blue w3-cell-row w3-cell-middle">
+        <div class="w3-cell w3-cell-middle">
+          <h3 class="w3-left">In progress...</h3>
+        </div>
+        <div class="w3-cell">
+          <button onclick="location.reload(true);" 
+         class="w3-button w3-flat-clouds w3-padding-large w3-margin-top w3-margin-bottom w3-right">
+          <i class="fa fa-refresh"></i> Refresh</button>
+        </div>
+      </div>
+  </div>
+  {% endif %}
+  
+  {% if query_status == 'expired' %}
+  <div class="w3-twothird w3-card w3-blue w3-margin-bottom w3-margin-left w3-padding-8">
+      <div class="w3-container w3-amber w3-cell-row w3-cell-middle">
+        <div class="w3-cell w3-cell-middle">
+          <h3 class="w3-left">Query expired</h3>
+        </div>
+        <div class="w3-cell">
+          <!-- FIXME -->
+          <button onclick="#" 
+         class="w3-button w3-deep-orange w3-padding-large w3-margin-top w3-margin-bottom w3-right">
+          <i class="fa fa-refresh"></i> Re-run</button>
+        </div>
+      </div>
+  </div>
+  {% endif %}
+  
+  <!-- Use dynamic table display code for large tables -->
+  <div class="w3-container w3-padding-16">
+    
+<!--    <div class="clusterize">-->
+<!--      <table class="w3-table">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--          {% for col in sql_cols %}-->
+<!--            <th>{{ col }}</th>-->
+<!--          {% endfor %}}-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--      </table>-->
+<!--      <div id="scrollArea" class="clusterize-scroll">-->
+<!--        <table class="w3-table w3-white">-->
+<!--          <tbody id="contentArea" class="clusterize-content">-->
+<!--            <tr class="clusterize-no-data">-->
+<!--              <td>Loading data...</td>-->
+<!--            </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+    
+    <div>
+      
+      <!-- Button: Delete query -->
+      <button onclick="document.getElementById('modal-delete').style.display='block'" 
+              class="w3-button w3-flat-pomegranate w3-padding-large w3-margin-top w3-margin-bottom">
+              <i class="fa fa-times"></i> Delete query</button>
+      
+      <!-- Button: Copy table to clipboard -->
+      <button onclick="selectElementContents('tblResults')" 
+              class="w3-button w3-indigo w3-padding-large w3-margin-top w3-margin-bottom">
+              <i class="fa fa-clipboard"></i> Copy table</button>
+      
+      <!-- Button: Download table -->
+      <button onclick="location.href='/download_result/{{query_id}}'" 
+              class="w3-button w3-blue w3-padding-large w3-margin-top w3-margin-bottom">
+              <i class="fa fa-download"></i> Download table</button>
+      
+      <!-- Modal dialog for delete query -->
+      <div id="modal-delete" class="w3-modal">
+        <div class="w3-modal-content" style="max-width:500px">
+          <div class="w3-container w3-flat-pomegranate">
+            <span onclick="document.getElementById('modal-delete').style.display='none'" 
+              class="w3-button w3-display-topright w3-xlarge">&times;</span>
+              
+              <div class="w3-container w3-flat-pomegranate">
+                <h3><b>Delete query?</b></h3>
+              </div>
+              <div class="w3-container w3-flat-pomegranate">
+                <p style="margin-top:0px">The query and any results will be permanently deleted.</p>
+              </div>
+              <div class="w3-container" style="margin-top:0px">
+                <button onclick="location.href='/query_remove/{{query_id}}';" 
+                class="w3-button w3-padding-large w3-margin-top w3-margin-bottom w3-right" style="background-color: #922B21">
+                <i class="fa fa-times"></i> Confirm delete</button>
+              </div>
+              <div class="w3-container w3-flat-pomegranate">
+                <p style="margin-top:0px"></p>
+              </div>
+        </div>
+      </div>
+      </div>
+      
+      <div class="w3-container" style="overflow-x:scroll; padding: 0em">
+      
+      <!-- Results table -->
+      <table id="tblResults"
+             class="w3-table w3-white w3-border w3-responsive w3-small" 
+             style="font-family: monospace">
+        <thead class="w3-dark-gray">
+          <tr>
+          {% for col in sql_cols %} <th>{{ col }}</th> {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+        {% for row in sql_res[:sql_max_rows] %}
+        <tr>
+          {% for col in row %} <td>{{ col }}</td> {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    
+    </div>
+    
+  </div>
+  <!-- End dynamic table display -->
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+  
+{% endblock %}

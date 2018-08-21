@@ -1,0 +1,152 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+    <h1><b>SKA Simulations</b></h1>
+    
+<!--    <div class="w3-container">-->
+<!--      <p>Welcome to the SKA Simulation Service.</p>-->
+<!--    </div>-->
+    
+    <div class="w3-section w3-bottombar w3-padding-16">
+      <span class="w3-margin-right">Filter:</span> 
+      <button class="w3-button w3-signal-black simselect" onclick="show_all()">ALL</button>
+      <button class="w3-button w3-indigo simselect" onclick="show_only(this, 'continuum')"><i class="fa fa-asterisk w3-margin-right"></i>Continuum</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'higal')"><i class="fa fa-superpowers w3-margin-right"></i>HI galaxies</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'intensitymap')"><i class="fa fa-th-large w3-margin-right"></i>Intensity maps</button>
+      
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'catalogue')"><i class="fa fa-cubes w3-margin-right"></i>Catalogues</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'image')"><i class="fa fa-photo w3-margin-right"></i>Images</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'snapshot')"><i class="fa fa-cube w3-margin-right"></i>Snapshots</button>
+    </div>
+    </div>
+  </header>
+  
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-margin-left">
+    
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum higal catalogue">
+      <img src="/static/images/continuum.jpg" alt="UNITY" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>UNITY</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-superpowers"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">JPL/QMUL</p>
+        <p>
+          Multi-wavelength mock galaxy catalogue, including 21cm line, continuum, optical <i>ugrizy</i> and H-alpha. Based on Horizon simulation(??) and the <i>Galacticus</i> SAM. Covers 0 &lt; z &lt; 1.5 over XXX deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum higal catalogue">
+      <img src="/static/images/ghost.jpg" alt="ghost" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>ghost</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-superpowers"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">QMUL</p>
+        <p>
+          Multi-wavelength mock catalogue, including 21cm, continuum, optical <i>ugriz</i>. Based on COLA fast N-body simulations and the <i>ghost</i> analytic galaxy model. Covers 0 &lt; z &lt; XX over XX deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-third w3-card w3-margin-bottom w3-padding-16 continuum catalogue image">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p class="w3-half">
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+          <i class="fa fa-photo"></i>
+        </p>
+        <p class="w3-half w3-right-align w3-text-gray">U. Manchester</p>
+        <p>
+          Continuum mock catalogue and images, with intensity and polarisation information. Based on Millennium(?) simulation and empirical scaling relations. Covers 0 &lt; z &lt; 8 over 25 deg<sup>2</sup>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-margin-left">
+    
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16 continuum">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+    
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%; max-height:230px" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-card w3-margin-bottom w3-padding-16">
+      <img src="/static/images/continuum.jpg" alt="T-RECS" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p>
+          <b>T-RECS</b>
+          <i class="fa fa-asterisk"></i>
+          <i class="fa fa-cubes"></i>
+        </p>
+        <p>
+          Continuum mock galaxy catalogue, covering 0 &lt; z &lt; 8 over an 
+          area of 25 deg2, in intensity and polarisation.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+
+{% endblock %}
+

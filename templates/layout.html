@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <title>SKA Simulations</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-colours.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <script src="static/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="static/ace-builds/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+  
+  <link rel="shortcut icon" href="/static/images/ska.ico"/>
+
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .w3-signal-black {color:#fff; background-color:#282828}    
+  </style>
+  
+  <!-- Fading -->
+  <style>
+    .animated-fade-in {
+        animation-duration: 0.4s;
+        animation-name: fadeIn;
+    }
+    .animated-fade-out {
+        animation-duration: 0.4s;
+        animation-name: fadeOut;
+    }
+
+    @keyframes fadeIn {
+        0%   { opacity: 0.1; }
+        100% { opacity: 1.0; }
+    }
+    @keyframes fadeOut {
+        0%   { opacity: 1.0; }
+        100% { opacity: 0.1; }
+    }
+  </style>
+  
+  <!-- ACE code editor -->
+  <style type="text/css" media="screen">
+    #query-editor { 
+        min-height: 300px;
+        font-size: large;
+    }
+    .clickable { cursor: pointer }
+    
+    
+    .ace_editor.ace_autocomplete .ace_completion-highlight{
+        color: #3F51B5; /*#c0392b;*/
+    }
+    
+    .ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {
+        background-color: rgba(63, 81, 181, 0.2);
+    }
+    
+    .ace_editor.ace_autocomplete .ace_line-hover {
+        border: 1px solid #3F51B5;
+        margin-top: -1px;
+        background: rgba(63, 81, 181, 0.15);
+        position: absolute;
+        z-index: 2;
+    }
+     
+    .ace_editor.ace_autocomplete {
+        width: 40%;
+        min-width: 400px;
+        z-index: 200000;
+        border: 1px lightgray solid;
+        position: fixed;
+        box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+        line-height: 1.8;
+        background: #EBEBEB;
+        font-size: large;
+        color: #1d1d1d;
+    }
+    
+  </style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white" style="z-index:30000;width:300px;" id="mySidebar"><br>
+  
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-large w3-padding w3-hover-grey" title="Hide">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="/static/images/ska_logo.jpg" style="width:45%;">
+    <br>
+    <h4><b>SIMULATIONS</b></h4>
+  </div>
+  
+  <!-- SIMULATIONS -->
+  <div class="w3-bar-block">
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      All simulations
+    </a>
+    <a href="/sim?name=ghost" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      All snapshots
+    </a>
+  </div>
+  
+  <!-- QUERY UI -->
+  <div class="w3-container">
+    <h4><b>ACCESS DATA</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    
+    <!-- Option: Query catalogues -->
+    <a href="/query_catalogue" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-search fa-fw w3-margin-right"></i>
+      Query catalogues
+    </a>
+    
+    <!-- Option: Recent queries -->
+    <a href="/recent_queries" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-list fa-fw w3-margin-right"></i>
+      Recent queries
+    </a>
+    
+    <!-- Option: Donwload snapshots (currently disabled) -->
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-grey">
+      <i class="fa fa-download fa-fw w3-margin-right"></i>
+      Download snapshots
+    </a>
+    
+    <!-- Option: Generate datacubes (currently disabled) -->
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-grey">
+      <i class="fa fa-cube fa-fw w3-margin-right"></i>
+      Generate datacubes
+    </a>
+    
+    
+  </div>
+  
+  <!-- INFO -->
+  <div class="w3-container">
+    <h4><b>INFO</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-user fa-fw w3-margin-right"></i>
+      ABOUT
+    </a> 
+    <a href="/contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-envelope fa-fw w3-margin-right"></i>
+      CONTACT
+    </a>
+  </div>
+  
+  <footer class="w3-container">
+    <br>
+    <p class="w3-text-grey">Hosted by:</p>
+    <img src="/static/images/qmul.png" style="width:65%;">
+  </footer>
+  
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  {% block content %}{% endblock %}
+  
+  <!--
+  <!-- Footer --
+  <footer class="w3-container w3-padding-16 w3-dark-grey ">
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <h3>ABOUT</h3>
+      <p>The SKA Simulation Repository is hosted by Queen Mary, University of London.</p>
+    </div>
+  
+    <div class="w3-half">
+      <h3>BLOG POSTS</h3>
+      <ul class="w3-ul w3-hoverable">
+        <li class="w3-padding-16">
+          <span class="w3-large">Lorem</span><br>
+          <span>Sed mattis nunc</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  </footer>
+  -->
+  
+  <!--
+  <div class="w3-black w3-center w3-padding-16">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+  -->
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+</script>
+
+<script>
+function generate_data(){
+    
+    // Generate some example data
+    var data = [];
+    var N = 500;
+    for (var i = 1; i <= N; i++){
+       data.push('<tr><td>' + i + '</td><td>xyz</td><td>comment</td></tr>');
+    }
+    
+    // Create new Clusterize object
+    var clusterize = new Clusterize({
+        rows: data,
+        scrollId: 'scrollArea',
+        contentId: 'contentArea',
+        tag: 'tr'
+    });
+}
+</script>
+
+<script>
+// Script to handle showing/hiding documentation
+function show_docs(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+<script>
+function generate_data(){
+    
+    // Generate some example data
+    var data = [];
+    var N = 500;
+    for (var i = 1; i <= N; i++){
+       data.push('<tr><td>' + i + '</td><td>xyz</td><td>comment</td></tr>');
+    }
+    
+    // Create new Clusterize object
+    var clusterize = new Clusterize({
+        rows: data,
+        scrollId: 'scrollArea',
+        contentId: 'contentArea',
+        tag: 'tr'
+    });
+}
+</script>
+
+<script>
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
+
+<script>
+
+function focus_all_buttons(){
+  var btns = document.getElementsByClassName("simselect");
+    for (var i = btns.length - 1; i >= 0; i--){
+      btns[i].classList.remove('w3-black', 'w3-hover-black');
+    }
+}
+
+function show_all(btn, card_type) {
+    // Show only the cards that belong to the specified class
+    var cards = document.getElementsByClassName("item-card");
+    for (var i = cards.length - 1; i >= 0; i--){
+      
+      // Remove any existing animation classes
+      cards[i].classList.remove('animated-fade-in');
+      cards[i].classList.remove('animated-fade-out');
+      
+      // Make sure opacity property is set
+      if (cards[i].style.opacity == ""){ cards[i].style.opacity = "1.0"; }
+      
+      // Fade in any currently-defocused cards
+      if (parseFloat(cards[i].style.opacity) != 1.0) {
+        cards[i].classList.add('animated-fade-in');
+        cards[i].style.opacity = "1.0";
+      }
+    } // end loop over cards
+    
+    // Highlight all buttons too
+    focus_all_buttons();
+}
+
+function show_only(btn, card_type) {
+  // Show only the cards that belong to the specified class
+  //var cards = document.getElementsByClassName(card_type);
+  var cards = document.getElementsByClassName("item-card");
+  for (var i = cards.length - 1; i >= 0; i--){
+    
+    // Remove any existing animation classes
+    cards[i].classList.remove('animated-fade-in');
+    cards[i].classList.remove('animated-fade-out');
+    
+    // Make sure opacity property is set
+    if (cards[i].style.opacity == ""){ cards[i].style.opacity = "1.0"; }
+    
+    if (cards[i].classList.contains(card_type)){
+      // Card should be displayed; fade in if necessary
+      if (parseFloat(cards[i].style.opacity) != 1.0){
+          cards[i].classList.add('animated-fade-in');
+          cards[i].style.opacity = "1.0";
+      }
+    }else{
+      // Card should not be displayed; fade out if necessary
+      if (parseFloat(cards[i].style.opacity) == 1.0){
+          cards[i].classList.add('animated-fade-out');
+          cards[i].style.opacity = "0.1";
+      }else{
+          // Set opacity to standard faded-out value, just in case it wasn't
+          cards[i].style.opacity = "0.1";
+      }
+    } // end test card type
+  } // end loop over cards
+  
+  // Highlight button that was clicked
+  focus_all_buttons();
+  btn.classList.add('w3-black', 'w3-hover-black');
+}
+
+
+function selectElementContents(ename) {
+    // From: https://stackoverflow.com/questions/26053004/copy-whole-html-table-to-clipboard-javascript
+    var el = document.getElementById(ename);
+    var body = document.body, range, sel;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange();
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        try {
+            range.selectNodeContents(el);
+            sel.addRange(range);
+        } catch (e) {
+            range.selectNode(el);
+            sel.addRange(range);
+        }
+    } else if (body.createTextRange) {
+        range = body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    }
+    document.execCommand("Copy");
+    
+    if (window.getSelection) {window.getSelection().removeAllRanges();}
+    else if (document.selection) {document.selection.empty();}
+}
+
+
+</script>
+
+</body>
+</html>
+

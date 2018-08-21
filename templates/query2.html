@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- Font choice -->
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    .w3-2017-marina {color:#fff;background-color:#578CA9}
+  </style>
+  
+  <!-- ACE code editor -->
+  <style type="text/css" media="screen">
+    #query-editor { 
+        min-height: 400px;
+        font-size: x-large;
+    }
+  </style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="static/images/ska_logo.jpg" style="width:45%;">
+    <br>
+    <h4><b>SIMULATIONS</b></h4>
+  </div>
+  
+  <!-- SIMULATIONS -->
+  <div class="w3-bar-block">
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      UNITY
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      GHOST
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      JUBILEE
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      T-RECS
+    </a>
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo w3-hover-indigo">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>
+      S3-SAX (Legacy)
+    </a>
+  </div>
+  
+  <!-- QUERY UI -->
+  <div class="w3-container">
+    <h4><b>QUERY CATALOGUE</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-search fa-fw w3-margin-right"></i>
+      SQL QUERY
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-info fa-fw w3-margin-right"></i>
+      GETTING STARTED
+    </a>
+  </div>
+  
+  <!-- INFO -->
+  <div class="w3-container">
+    <h4><b>INFO</b></h4>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-user fa-fw w3-margin-right"></i>
+      ABOUT
+    </a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-envelope fa-fw w3-margin-right"></i>
+      CONTACT
+    </a>
+  </div>
+  
+  <footer class="w3-container">
+    <br><br>
+    <p class="w3-text-grey">Hosted by:</p>
+    <img src="/static/images/qmul.png" style="width:80%;">
+  </footer>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="sims">
+    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h1><b>SQL Query interface</b></h1>
+    </div>
+  </header>
+    
+  <div class="w3-container">
+    <h2>SQL Query</h2>
+    
+    <!-- Code editor UI -->
+    <div id="query-editor">select mhalo from ghost
+    where mhalo > 1e14</div>
+    
+    <div class="w3-container">
+      <button class="w3-button w3-indigo w3-padding-large w3-margin-top w3-margin-bottom">
+        <i class="fa fa-download w3-margin-right"></i>Run Query
+      </button>
+    </div>
+    
+  </div>
+  <!-- End code editor UI -->
+  
+  
+  <!-- Catalogue column description UI -->
+  <div class="w3-container w3-padding-large w3-margin-bottom">
+    <h2>Catalogue Specifications</h2>
+    
+    
+    <button onclick="show_docs('unity')" class="w3-btn w3-block w3-large w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> UNITY</button>
+    <div id="unity" class="w3-container w3-hide">
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Units</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>mhalo</td>
+          <td>float</td>
+          <td>Msun</td>
+          <td>Halo virial mass</td>
+        </tr>
+      </table>
+    </div>
+    
+    
+    <button onclick="show_docs('ghost')" class="w3-btn w3-block w3-large w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> ghost</button>
+    <div id="ghost" class="w3-container w3-hide">
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Units</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>mhalo</td>
+          <td>float</td>
+          <td>Msun</td>
+          <td>Halo virial mass</td>
+        </tr>
+      </table>
+    </div>
+    
+    
+    <button onclick="show_docs('trecs')" class="w3-btn w3-block w3-large w3-left-align w3-gray w3-hover-black"><i class="fa fa-caret-right"></i> T-RECS</button>
+    <div id="trecs" class="w3-container w3-hide">
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Units</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>mhalo</td>
+          <td>float</td>
+          <td>Msun</td>
+          <td>Halo virial mass</td>
+        </tr>
+      </table>
+    </div>
+    
+</div>
+  <!-- End catalogue column description -->
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+  
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <div class="w3-row-padding">
+    
+    <div class="w3-half">
+      <h3>ABOUT</h3>
+      <p>The SKA Simulation Repository is hosted by Queen Mary, University of London.</p>
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div>
+  
+    <div class="w3-half">
+      <h3>BLOG POSTS</h3>
+      <ul class="w3-ul w3-hoverable">
+        <li class="w3-padding-16">
+          <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Lorem</span><br>
+          <span>Sed mattis nunc</span>
+        </li>
+        <li class="w3-padding-16">
+          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Ipsum</span><br>
+          <span>Praes tinci sed</span>
+        </li> 
+      </ul>
+    </div>
+
+  </div>
+  </footer>
+  
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+<script>
+// Script to handle documentation
+function show_docs(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+<script src="static/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("query-editor");
+    editor.setTheme("ace/theme/sql-server");
+    editor.getSession().setMode("ace/mode/sql");
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- Header -->
+  <header id="sims">
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <div class="w3-container">
+    <h1>Recent Queries</h1>
+    <p>There are {{ num_queries }} queries ({{ num_queries_running }} running).</p>
+    
+    <!-- Selection bar for sims -->
+    <div class="w3-section w3-bottombar">
+      <span class="w3-margin-right">Filter:</span> 
+      <button class="w3-button w3-signal-black simselect" onclick="show_all()">ALL</button>
+      <button class="w3-button w3-indigo simselect" onclick="show_only(this, 'status-running')"><i class="fa fa-spinner w3-margin-right"></i>Running</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'status-finished')"><i class="fa fa-check w3-margin-right"></i>Finished</button>
+      <button class="w3-button w3-indigo w3-hide-small simselect" onclick="show_only(this, 'status-failed')"><i class="fa fa-exclamation-circle w3-margin-right"></i>Failed</button>
+      
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'myqueries')"><i class="fa fa-cubes w3-margin-right"></i>My queries</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'image')"><i class="fa fa-photo w3-margin-right"></i>Images</button>
+      <button class="w3-button w3-white w3-hide-small simselect" onclick="show_only(this, 'snapshot')"><i class="fa fa-cube w3-margin-right"></i>Snapshots</button>
+    </div>
+    </div>
+    
+  </header>
+  
+  <!-- List of cards containing query info -->
+  <div class="w3-row-padding w3-margin-left w3-twothird" style="width:80%; min-width:500px">
+    
+    {% for info in query_info %}
+    <a class="w3-card w3-margin-bottom w3-margin-right item-card {{ info[4] }}" style="display:block; margin-left:3em; padding:4px; border-left: solid {{ info[3] }} 4px" href="/query_status/{{ info[5] }}">
+      <div class="w3-container w3-white">
+        <p class="w3-quarter w3-text-gray">@{{ info[1] }}</p>
+        <p class="w3-half">{{ info[0] }}</p>
+        <p class="w3-quarter w3-right-align w3-text-gray">{{ info[2] }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  
+  </div>
+  <!-- End dynamic table display -->
+  
+  
+  <!-- Spacer -->
+  <div class="w3-panel">
+   <br>
+  </div> 
+  
+{% endblock %}
