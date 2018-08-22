@@ -10,6 +10,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
 from sqlalchemy.orm import sessionmaker
 
+EXPIRY_TIME = 5*24*60*60 # seconds, how long to keep query results
+
 statuses = {
     'finished': (0, '#60a917', 'status-finished'),
     'running':  (1, '#3e65ff', 'status-running'),

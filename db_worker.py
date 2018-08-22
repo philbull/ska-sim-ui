@@ -7,7 +7,7 @@ from celery.task.control import inspect as celery_inspect
 import db_interface
 
 # Set up app with connection to broker
-app = Celery('dbqueries', backend='redis://localhost:6379/0', broker='pyamqp://guest@localhost//', result_persistent=True, result_expires=24*60*60)
+app = Celery('dbqueries', backend='redis://localhost:6379/0', broker='pyamqp://guest@localhost//', result_persistent=True, result_expires=db_interface.EXPIRY_TIME)
 
 # Limit rate of submitting tasks
 #app.control.rate_limit('db_worker.query_db', '20/m')

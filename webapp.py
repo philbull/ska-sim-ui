@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request, json, url_for, redirect, send_file
 import db_interface
-from db_interface import statuses, status_map
+from db_interface import statuses, status_map, EXPIRY_TIME
 from db_worker import query_db, list_tasks
 import os, glob
 import StringIO
@@ -183,7 +183,8 @@ def query_status(query_id):
         return render_template('show_query.html', sql_query=sql_query, 
                                sql_res=[], sql_cols=sql_cols, 
                                sql_err=None, sql_max_rows=200, 
-                               query_status=query_status, query_id=query_id)
+                               query_status=query_status, query_id=query_id, 
+                               expiry_time="%d" % (EXPIRY_TIME/(24.*3600.)))
     else:
         # An unknown error occurred
         sql_query = "ERROR"
