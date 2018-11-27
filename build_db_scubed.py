@@ -13,8 +13,8 @@ if __name__ == '__main__':
     
     # Build tblspec
     tspec = {}; ordering = {}
-    with open("scubed-1mil.header", 'r') as f:
-        hdr = d.readline()[:-1].split(",")
+    with open("/data/skasims/scubed-1mil.header", 'r') as f:
+        hdr = f.readline()[:-1].split(",")
         print hdr
         
         # Loop over fields and build table spec
@@ -30,9 +30,7 @@ if __name__ == '__main__':
                 tspec[field] = (field, dbint.Float)
     
     print tspec
-    
-    exit()
-    
+        
     # Create table if needed
     if tblname not in galdb.tables.keys():
         
@@ -40,7 +38,7 @@ if __name__ == '__main__':
         galdb.build_table(tblname, tspec)
         
         # Load cached npy data
-        dat = np.load("scubed-1mil.npy")
+        dat = np.load("/data/skasims/scubed-1mil.npy")
         assert dat.shape[0] < dat.shape[1]
         
         # Package into dict
