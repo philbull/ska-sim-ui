@@ -342,11 +342,11 @@ if __name__ == '__main__':
     tblname = 'galacticus'
     
     # Load HDF5 files into database
-    if False:
-        for i in range(9, 24):
+    if True:
+        for i in range(1, 24):
             # Open HDF5 file and get table spec
             hfile, hgrp, tspec = load_hdf5(
-                                    fname='../data/galacticus_pixel390654.hdf5', 
+                                    fname='/data/skasims/galacticus_pixel390654.hdf5', 
                                     dset="Outputs/Output%d/nodeData" % i)
             
             # Create table if needed
@@ -363,6 +363,7 @@ if __name__ == '__main__':
     #print(galdb.tables[tblname]['hotHaloMass'])
     res = galdb.query("select blackHoleMass, lightconeRedshift from galacticus;")
     
+    """
     import numpy as np
     import pylab as plt
     
@@ -372,5 +373,5 @@ if __name__ == '__main__':
     plt.plot(z, m_bh, 'r.')
     plt.yscale('log')
     plt.show()
-    
+    """
     
