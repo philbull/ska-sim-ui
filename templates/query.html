@@ -57,7 +57,7 @@
         {% for cat in catalogues %}
         <li class="clickable">
           <code>
-            <a style="text-decoration: none;" href="/sim?name={{ cat }}" target="_blank">{{ cat }} <i class="fa fa-external-link w3-tiny"></i></a>
+            <a style="text-decoration: none;" href="/ska/sim?name={{ cat }}" target="_blank">{{ cat }} <i class="fa fa-external-link w3-tiny"></i></a>
           </code>
         </li>
         {% endfor %}
@@ -97,7 +97,7 @@
 function submit_query(){
   var editor = ace.edit("query-editor");
   var query = editor.getValue();
-  post('/sql_query', {sql: query});
+  post('/ska/sql_query', {sql: query});
 }
 </script>
 

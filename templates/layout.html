@@ -3,15 +3,15 @@
   <title>SKA Simulations</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/static/w3.css">
-  <link rel="stylesheet" href="/static/w3-colours.css">
+  <link rel="stylesheet" href="/ska/static/w3.css">
+  <link rel="stylesheet" href="/ska/static/w3-colours.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <script src="/static/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/static/ace-builds/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/ska/static/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/ska/static/ace-builds/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
   
-  <link rel="shortcut icon" href="/static/images/ska.ico"/>
+  <link rel="shortcut icon" href="/ska/static/images/ska.ico"/>
 
   <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
@@ -88,18 +88,18 @@
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-large w3-padding w3-hover-grey" title="Hide">
       <i class="fa fa-remove"></i>
     </a>
-    <img src="/static/images/ska_logo.jpg" style="width:45%;">
+    <img src="/ska/static/images/ska_logo.jpg" style="width:45%;">
     <br>
     <h4><b>SIMULATIONS</b></h4>
   </div>
   
   <!-- SIMULATIONS -->
   <div class="w3-bar-block">
-    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-th-large fa-fw w3-margin-right"></i>
       All simulations
     </a>
-    <a href="/sim?name=ghost" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/sim?name=ghost" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-th-large fa-fw w3-margin-right"></i>
       All snapshots
     </a>
@@ -113,13 +113,13 @@
   <div class="w3-bar-block">
     
     <!-- Option: Query catalogues -->
-    <a href="/query_catalogue" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/query_catalogue" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-search fa-fw w3-margin-right"></i>
       Query catalogues
     </a>
     
     <!-- Option: Recent queries -->
-    <a href="/recent_queries" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/recent_queries" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-list fa-fw w3-margin-right"></i>
       Recent queries
     </a>
@@ -145,11 +145,11 @@
   </div>
   
   <div class="w3-bar-block">
-    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-user fa-fw w3-margin-right"></i>
       ABOUT
     </a> 
-    <a href="/contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <a href="/ska/contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
       <i class="fa fa-envelope fa-fw w3-margin-right"></i>
       CONTACT
     </a>
@@ -158,7 +158,7 @@
   <footer class="w3-container">
     <br>
     <p class="w3-text-grey">Hosted by:</p>
-    <img src="/static/images/qmul.png" style="width:65%;">
+    <img src="/ska/static/images/qmul.png" style="width:65%;">
   </footer>
   
 </nav>
@@ -170,29 +170,6 @@
 <div class="w3-main" style="margin-left:300px">
 
   {% block content %}{% endblock %}
-  
-  <!--
-  <!-- Footer --
-  <footer class="w3-container w3-padding-16 w3-dark-grey ">
-  <div class="w3-row-padding">
-    <div class="w3-half">
-      <h3>ABOUT</h3>
-      <p>The SKA Simulation Repository is hosted by Queen Mary, University of London.</p>
-    </div>
-  
-    <div class="w3-half">
-      <h3>BLOG POSTS</h3>
-      <ul class="w3-ul w3-hoverable">
-        <li class="w3-padding-16">
-          <span class="w3-large">Lorem</span><br>
-          <span>Sed mattis nunc</span>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-  </footer>
-  -->
   
   <!--
   <div class="w3-black w3-center w3-padding-16">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
