@@ -130,7 +130,7 @@ def recent_queries():
         # Construct table
         s_id, s_col, s_tag = statuses[status_map[t.status]]
         qry = t.query[:80] + (t.query[80:] and '...') # truncate query
-        queries.append( (qry, 'philbull', t.created, s_col, s_tag, t.uuid) )
+        queries.append( (qry, 'anon', t.created, s_col, s_tag, t.uuid) )
     
     return render_template('recent_queries.html', query_info=queries, 
                            num_queries=nqueries, num_queries_running=nrunning)
