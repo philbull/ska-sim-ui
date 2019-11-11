@@ -1,0 +1,512 @@
+{
+  "name":        "delucia",
+  "long-name":   "de Lucia 2006 milli-Millennium catalogue",
+  "credit":      "MPA/de Lucia",
+  "provides": [
+      {"value": "higal"},
+      {"value": "continuum"}
+   ],
+  "short-desc": "Semi-analytic mock galaxy catalogue based on the milli-Millennium simulations, from de Lucia et al. 2006. The SKA S-cubed sims are based on this catalogue. For more information, see: http://gavo.mpa-garching.mpg.de/Millennium/Help?page=databases/millimil/delucia2006a",
+  "catalogue": {
+        "table_name": "delucia2006",
+        "fields": [
+            {"name":    "galaxyID",
+             "units":   "None",
+             "desc":    "ID of galaxy, unique within simulation and SAM run."
+            },
+            {"name":    "lastProgenitorId",
+             "units":   "None",
+             "desc":    "All galaxies with id between this galaxyId and this lastProgenitorId together are the merger tree rooted in this galaxy."
+            },
+            {"name":    "descendantId",
+             "units":   "None",
+             "desc":    "Pointer to the descendant of this galaxy in its merger tree; -1 if there is no descendant"
+            },
+            {"name":    "haloID",
+             "units":   "None",
+             "desc":    "Unique ID of MPA halo containing this galaxy"
+            },
+            {"name":    "subHaloID",
+             "units":   "None",
+             "desc":    "The ID of the sub-halo this galaxy resides in. Identical to the subhaloId of the halo identified by the haloId."
+            },
+            {"name":    "fofID",
+             "units":   "None",
+             "desc":    "The id of the sub-halo at the center of the friends-of-friends (FOF) this galaxy resides in. NB This is not equivalent to the firstSubhaloID column in the FOF table!"
+            },
+            {"name":    "treeId",
+             "units":   "None",
+             "desc":    "unique id of galaxy formation tree containing this galaxy"
+            },
+            {"name":    "firstProgenitorId",
+             "units":   "None",
+             "desc":    "Main progenitor of this galaxy. Also the first progenitor in a linked list representation of the merger tree."
+            },
+            {"name":    "nextProgenitorId",
+             "units":   "None",
+             "desc":    "Next progenitor of this galaxy in linked list representation of merger tree"
+            },
+            {"name":    "type",
+             "units":   "None",
+             "desc":    "0,1 or 2 indicating whether this galaxy is a central galaxy of its FOF group, central galaxy of a subhalo, or a satellite galaxy."
+            },
+            {"name":    "snapnum",
+             "units":   "None",
+             "desc":    "The snapshot number where this galaxy was identified. This column corresponds to the snapnum column in the Snapshots table in this database."
+            },
+            {"name":    "redshift",
+             "units":   "None",
+             "desc":    "redshift of the snapshot where this galaxy resides"
+            },
+            {"name":    "centralMvir",
+             "units":   "1010/h Msun",
+             "desc":    "virial mass of background (FOF) halo containing this galaxy"
+            },
+            {"name":    "phkey",
+             "units":   "None",
+             "desc":    "Peano-Hilbert key, (bits=5), for position in 62.5/h Mpc box See the text on spatial indexes."
+            },
+            {"name":    "x",
+             "units":   "1/h Mpc",
+             "desc":    "The X-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "y",
+             "units":   "1/h Mpc",
+             "desc":    "The Y-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "z",
+             "units":   "1/h Mpc",
+             "desc":    "The Z-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "zIndex",
+             "units":   "None",
+             "desc":    "The bit-interleaved or Z-curve index, corresponding to this galaxy's position. Same resolution as phKey. See the text on spatial indexes."
+            },
+            {"name":    "ix",
+             "units":   "None",
+             "desc":    "Zone index along x-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "iy",
+             "units":   "None",
+             "desc":    "Zone index along y-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "iz",
+             "units":   "None",
+             "desc":    "Zone index along z-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "velX",
+             "units":   "km/s",
+             "desc":    "The X-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "velY",
+             "units":   "km/s",
+             "desc":    "The Y-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "velZ",
+             "units":   "km/s",
+             "desc":    "The Z-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "np",
+             "units":   "None",
+             "desc":    "Number of particles in halo the galaxy belongs to."
+            },
+            {"name":    "mvir",
+             "units":   "10^10/h Msun",
+             "desc":    "Virial mass of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "rvir",
+             "units":   "Mpc/h",
+             "desc":    "Virial radius of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "vvir",
+             "units":   "km/s",
+             "desc":    "Virial velocity of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "vmax",
+             "units":   "km/s",
+             "desc":    "Maximum rotational velocity of the subhalo of which this galaxy is the center, or the last value for satellite galaxies."
+            },
+            {"name":    "coldGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in cold gas."
+            },
+            {"name":    "stellarMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in stars."
+            },
+            {"name":    "bulgeMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass of bulge."
+            },
+            {"name":    "hotGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in hot gas component of this galaxy's subhalo. TBD on type 2 galaxies."
+            },
+            {"name":    "ejectedMass",
+             "units":   "10^10/h Msun",
+             "desc":    "The ejected mass component (see de Lucia et al., 2004, MNRAS, Volume 349, 1101-1116)."
+            },
+            {"name":    "blackHoleMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass of central black hole"
+            },
+            {"name":    "metalsColdGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in cold gas."
+            },
+            {"name":    "metalsStellarMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in stars."
+            },
+            {"name":    "metalsBulgeMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in bulge."
+            },
+            {"name":    "metalsHotGas",
+             "units":   "10^10/h Msun",
+             "desc":    "ratio of mass in metals."
+            },
+            {"name":    "metalsEjectedMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in ejected gas."
+            },
+            {"name":    "sfr",
+             "units":   "Msun/yr",
+             "desc":    "Star formation rate"
+            },
+            {"name":    "sfrBulge",
+             "units":   "Msun/yr",
+             "desc":    "Star formation rate in the bulge."
+            },
+            {"name":    "xrayLum",
+             "units":   "TBD",
+             "desc":    "X-Ray luminosity"
+            },
+            {"name":    "diskRadius",
+             "units":   "Mpc/h",
+             "desc":    "Disk radius, derived form halo radius ala Mo, Mao and White (1997)"
+            },
+            {"name":    "coolingRadius",
+             "units":   "Mpc/h",
+             "desc":    "The radius within which the cooling time scale is shorter than the dynamical timescale"
+            },
+            {"name":    "mag_b",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_v",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega) of galaxy"
+            },
+            {"name":    "mag_r",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_i",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_k",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_bBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_vBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_rBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_iBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_kBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_bDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_vDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_rDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_iDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_kDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "massWeightedAge",
+             "units":   "10^9 yr",
+             "desc":    "The age of this galaxy, weighted by mass of their components."
+            },
+            {"name":    "random",
+             "units":   "None",
+             "desc":    "Random number between 0 and 1000 (using java.lang.Math.random()). See the page on random sampling."
+            },
+            {"name":    "",
+            {"name":    "galaxyID",
+             "units":   "None",
+             "desc":    "ID of galaxy, unique within simulation and SAM run."
+            },
+            {"name":    "lastProgenitorId",
+             "units":   "None",
+             "desc":    "All galaxies with id between this galaxyId and this lastProgenitorId together are the merger tree rooted in this galaxy."
+            },
+            {"name":    "descendantId",
+             "units":   "None",
+             "desc":    "Pointer to the descendant of this galaxy in its merger tree; -1 if there is no descendant"
+            },
+            {"name":    "haloID",
+             "units":   "None",
+             "desc":    "Unique ID of MPA halo containing this galaxy"
+            },
+            {"name":    "subHaloID",
+             "units":   "None",
+             "desc":    "The ID of the sub-halo this galaxy resides in. Identical to the subhaloId of the halo identified by the haloId."
+            },
+            {"name":    "fofID",
+             "units":   "None",
+             "desc":    "The id of the sub-halo at the center of the friends-of-friends (FOF) this galaxy resides in. NB This is not equivalent to the firstSubhaloID column in the FOF table!"
+            },
+            {"name":    "treeId",
+             "units":   "None",
+             "desc":    "unique id of galaxy formation tree containing this galaxy"
+            },
+            {"name":    "firstProgenitorId",
+             "units":   "None",
+             "desc":    "Main progenitor of this galaxy. Also the first progenitor in a linked list representation of the merger tree."
+            },
+            {"name":    "nextProgenitorId",
+             "units":   "None",
+             "desc":    "Next progenitor of this galaxy in linked list representation of merger tree"
+            },
+            {"name":    "type",
+             "units":   "None",
+             "desc":    "0,1 or 2 indicating whether this galaxy is a central galaxy of its FOF group, central galaxy of a subhalo, or a satellite galaxy."
+            },
+            {"name":    "snapnum",
+             "units":   "None",
+             "desc":    "The snapshot number where this galaxy was identified. This column corresponds to the snapnum column in the Snapshots table in this database."
+            },
+            {"name":    "redshift",
+             "units":   "None",
+             "desc":    "redshift of the snapshot where this galaxy resides"
+            },
+            {"name":    "centralMvir",
+             "units":   "1010/h Msun",
+             "desc":    "virial mass of background (FOF) halo containing this galaxy"
+            },
+            {"name":    "phkey",
+             "units":   "None",
+             "desc":    "Peano-Hilbert key, (bits=5), for position in 62.5/h Mpc box See the text on spatial indexes."
+            },
+            {"name":    "x",
+             "units":   "1/h Mpc",
+             "desc":    "The X-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "y",
+             "units":   "1/h Mpc",
+             "desc":    "The Y-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "z",
+             "units":   "1/h Mpc",
+             "desc":    "The Z-coordinate of the position in comoving coordinates."
+            },
+            {"name":    "zIndex",
+             "units":   "None",
+             "desc":    "The bit-interleaved or Z-curve index, corresponding to this galaxy's position. Same resolution as phKey. See the text on spatial indexes."
+            },
+            {"name":    "ix",
+             "units":   "None",
+             "desc":    "Zone index along x-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "iy",
+             "units":   "None",
+             "desc":    "Zone index along y-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "iz",
+             "units":   "None",
+             "desc":    "Zone index along z-direction, based on 7 bins See the text on spatial indexes."
+            },
+            {"name":    "velX",
+             "units":   "km/s",
+             "desc":    "The X-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "velY",
+             "units":   "km/s",
+             "desc":    "The Y-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "velZ",
+             "units":   "km/s",
+             "desc":    "The Z-component of the physical peculiar velocity of the galaxy."
+            },
+            {"name":    "np",
+             "units":   "None",
+             "desc":    "Number of particles in halo the galaxy belongs to."
+            },
+            {"name":    "mvir",
+             "units":   "10^10/h Msun",
+             "desc":    "Virial mass of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "rvir",
+             "units":   "Mpc/h",
+             "desc":    "Virial radius of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "vvir",
+             "units":   "km/s",
+             "desc":    "Virial velocity of the subhalo the galaxy is/was the center of."
+            },
+            {"name":    "vmax",
+             "units":   "km/s",
+             "desc":    "Maximum rotational velocity of the subhalo of which this galaxy is the center, or the last value for satellite galaxies."
+            },
+            {"name":    "coldGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in cold gas."
+            },
+            {"name":    "stellarMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in stars."
+            },
+            {"name":    "bulgeMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass of bulge."
+            },
+            {"name":    "hotGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in hot gas component of this galaxy's subhalo. TBD on type 2 galaxies."
+            },
+            {"name":    "ejectedMass",
+             "units":   "10^10/h Msun",
+             "desc":    "The ejected mass component (see de Lucia et al., 2004, MNRAS, Volume 349, 1101-1116)."
+            },
+            {"name":    "blackHoleMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass of central black hole"
+            },
+            {"name":    "metalsColdGas",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in cold gas."
+            },
+            {"name":    "metalsStellarMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in stars."
+            },
+            {"name":    "metalsBulgeMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in bulge."
+            },
+            {"name":    "metalsHotGas",
+             "units":   "10^10/h Msun",
+             "desc":    "ratio of mass in metals."
+            },
+            {"name":    "metalsEjectedMass",
+             "units":   "10^10/h Msun",
+             "desc":    "Mass in metals in ejected gas."
+            },
+            {"name":    "sfr",
+             "units":   "Msun/yr",
+             "desc":    "Star formation rate"
+            },
+            {"name":    "sfrBulge",
+             "units":   "Msun/yr",
+             "desc":    "Star formation rate in the bulge."
+            },
+            {"name":    "xrayLum",
+             "units":   "TBD",
+             "desc":    "X-Ray luminosity"
+            },
+            {"name":    "diskRadius",
+             "units":   "Mpc/h",
+             "desc":    "Disk radius, derived form halo radius ala Mo, Mao and White (1997)"
+            },
+            {"name":    "coolingRadius",
+             "units":   "Mpc/h",
+             "desc":    "The radius within which the cooling time scale is shorter than the dynamical timescale"
+            },
+            {"name":    "mag_b",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_v",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega) of galaxy"
+            },
+            {"name":    "mag_r",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_i",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_k",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega) of galaxy."
+            },
+            {"name":    "mag_bBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_vBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_rBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_iBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_kBulge",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega) of bulge"
+            },
+            {"name":    "mag_bDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame B (Buser B3 filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_vDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame V (Buser V filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_rDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame R (Johnson R filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_iDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame I (Johnson I filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "mag_kDust",
+             "units":   "None",
+             "desc":    "Absolute rest frame K (Johnson K filter) magnitude (Vega), dust extinction included"
+            },
+            {"name":    "massWeightedAge",
+             "units":   "10^9 yr",
+             "desc":    "The age of this galaxy, weighted by mass of their components."
+            },
+            {"name":    "random",
+             "units":   "None",
+             "desc":    "Random number between 0 and 1000 (using java.lang.Math.random()). See the page on random sampling."
+            }
+        ]
+  }
+}
