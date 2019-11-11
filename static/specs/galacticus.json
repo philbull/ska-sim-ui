@@ -10,10 +10,6 @@
   "catalogue": {
         "table_name": "galacticus",
         "fields": [
-            {"name": "mhalo", 
-             "units": "Msun", 
-             "desc": "Halo mass (virial radius)."
-            },
             {"name":     "id",
              "units":   "None",
              "desc":    "None"

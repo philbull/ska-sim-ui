@@ -19,11 +19,11 @@ app.conf.update(result_expires=db_interface.EXPIRY_TIME)
 def list_tasks(task_id):
     #query = cstate.State()
     stats = celery_inspect(['celery', 'lynx'])
-    print "TASK active:", stats.active()
-    print "TASK scheduled:", stats.scheduled()
-    print "TASK reserved:", stats.reserved()
-    print "TASK revoked:", stats.revoked()
-    print "TASK registered:", stats.registered()
+    print("TASK active:", stats.active())
+    print("TASK scheduled:", stats.scheduled())
+    print("TASK reserved:", stats.reserved())
+    print("TASK revoked:", stats.revoked())
+    print("TASK registered:", stats.registered())
 
 
 @app.task(bind=True)
@@ -59,7 +59,7 @@ def query_db(self, dbname, sql_query):
         task_db.update_task(uuid=self.request.id, status='finished')
         
     except Exception as err:
-        print "ERROR:", err
+        print("ERROR:", err)
         metadata['result'] = ([], [], str(err))
         task_db.update_task(uuid=self.request.id, status='failed')
     

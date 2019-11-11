@@ -4,7 +4,7 @@ import db_interface
 from db_interface import statuses, status_map, EXPIRY_TIME
 from db_worker import query_db, list_tasks
 import os, glob
-import StringIO
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -32,8 +32,8 @@ def load_all_json_files(rootdir):
             d = json.load(open(s))
             files.append(d)
         except Exception as err:
-            print "DEBUG: Error loading JSON file %s" % s
-            print err
+            print("DEBUG: Error loading JSON file %s" % s)
+            print(err)
             pass
     return files
 
@@ -147,7 +147,7 @@ def query_status(query_id):
     # Check status of query
     if query.ready():
         # Query finished; render results
-        print "*** FINISHED"
+        print("*** FINISHED")
         sql_query = query.get()['sql_query']
         cols, tbl, err = query.get()['result']
         status = 'error' if err else 'finished'
@@ -157,7 +157,7 @@ def query_status(query_id):
                                query_id=query_id)
     elif query.status == 'PROGRESS':
         # Query still in progress
-        print "*** PROGRESS"
+        print("*** PROGRESS")
         sql_query = query.get()['sql_query']
         return render_template('show_query.html', sql_query=sql_query, 
                                sql_res=[], sql_cols=['In progress',], 
@@ -188,7 +188,7 @@ def query_status(query_id):
     else:
         # An unknown error occurred
         sql_query = "ERROR"
-        print "*** ERROR"
+        print("*** ERROR")
         return render_template('show_query.html', sql_query=sql_query, 
                                sql_res=[], sql_cols=[], 
                                sql_err="Query returned an invalid status.", 
@@ -257,17 +257,19 @@ def download_result_as_table(query_id):
     if err: return redirect("#")
     
     # Query was successful; build results table
-    tbl = StringIO.StringIO() # string as file
+    tbl = BytesIO() # string as file
     
     # Add SQL query and column names in header
-    tbl.write( "# %s\n" % sql_query.replace("\n", " ") )
-    tbl.write( "# %s\n" % ", ".join(cols) )
+    tbl_str = ""
+    tbl_str += "# %s\n" % sql_query.replace("\n", " ")
+    tbl_str += "# %s\n" % ", ".join(cols)
     
     # Add data table to file
     for row in results:
-        tbl.write("%s\n" % ", ".join(str(item) for item in row))
+        tbl_str += "%s\n" % ", ".join(str(item) for item in row)
     
     # Seek to start of file and begin download
+    tbl.write(tbl_str.encode())
     tbl.seek(0)
     return send_file(tbl, attachment_filename="testing.csv", as_attachment=True)
 
